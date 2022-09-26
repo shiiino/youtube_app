@@ -78,15 +78,14 @@ def get_results(df_video, threshold=50000):
 
     try:
         results = pd.merge(left=df_extracted, right=df_videos_info, on='video_id')
-        #     カラム並び替え
         results = results.loc[:, ['video_id', 'title', 'view_count', 'subscriber_count', 'channel_id']]
     except:
         results = pd.DataFrame()
 
     return results
 
-#Streamlit部分
 
+#Streamlit部分
 st.title('YouTube分析アプリ')
 
 st.sidebar.write("""
@@ -116,7 +115,7 @@ url = f"https://youtu.be/{video_id}"
 video_field = st.empty()
 video_field.write('こちらに動画が表示されます')
 
-if st.button('ビデオ表示'):
+if st.button('動画を表示'):
     if len(video_id) > 0:
         try:
             video_field.video(url)
